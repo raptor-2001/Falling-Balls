@@ -2,8 +2,8 @@
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
-canvas.width = innerWidth
-canvas.height = innerHeight
+canvas.width = window.innerWidth
+canvas.height =window.innerHeight
 
 // Variables
 const mouse = {
@@ -15,7 +15,7 @@ const gravity = 1;
 const friction = 0.99;
 
 
-const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66']
+const colors = ['#8C1F66', '#323673', '#33A6A6', '#F29544','#F25041']
 
 function randomIntFromRange(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min)
@@ -32,10 +32,8 @@ addEventListener('mousemove', (event) => {
 })
 
 addEventListener('resize', () => {
-  canvas.width = innerWidth
-  canvas.height = innerHeight
-
-  init()
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
 })
 
 // Objects
@@ -76,7 +74,7 @@ class Ball {
 
 // Implementation
 
-let ball;
+
 let ballArray = [];
 function init() {
   for(let i=0; i<200; i++){
@@ -89,7 +87,9 @@ function init() {
   
     ballArray.push(new Ball(x,y,dx,dy,radius,color));
   }
-  ball = new Ball(canvas.width/2, canvas.height/2,2,2,30,'red');
+  
+
+  animate()
 }
 
 // Animation Loop
@@ -100,12 +100,7 @@ function animate() {
   for(let i=0; i<ballArray.length; i++){
     ballArray[i].update();
   }
-
-  
-  // objects.forEach(object => {
-  //  object.update()
-  // })
 }
 
 init()
-animate()
+
